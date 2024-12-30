@@ -130,7 +130,8 @@ func newContainerdContainerHandler(
 	// infrastructure container -- does not need their stats to be
 	// reported. This stops metrics being reported multiple times for each
 	// container in a pod.
-	metrics := common.RemoveNetMetrics(includedMetrics, cntr.Labels["io.cri-containerd.kind"] != "sandbox")
+	//metrics := common.RemoveNetMetrics(includedMetrics, cntr.Labels["io.cri-containerd.kind"] != "sandbox")
+	metrics := includedMetrics
 
 	libcontainerHandler := containerlibcontainer.NewHandler(cgroupManager, rootfs, int(taskPid), metrics)
 
